@@ -21,7 +21,14 @@ namespace TrilhaApiDesafio.Controllers
             // TODO: Buscar o Id no banco utilizando o EF
             // TODO: Validar o tipo de retorno. Se não encontrar a tarefa, retornar NotFound,
             // caso contrário retornar OK com a tarefa encontrada
-            return Ok();
+
+            // IMPLEMENTADO
+            var tarefa_selecionada = _context.Tarefas.Find(id);
+
+            if(tarefa_selecionada == null)
+                return NotFound();
+
+            return Ok(tarefa_selecionada);
         }
 
         [HttpGet("ObterTodos")]
